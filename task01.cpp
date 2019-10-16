@@ -1,7 +1,9 @@
 #include <cstdio>
 
 const char* toUpper(const char* input) {
-	// TO DO
+	char result[];
+	while(char != "\0"){}
+	
 }
 
 int main() {
