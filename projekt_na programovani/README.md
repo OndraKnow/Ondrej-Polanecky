@@ -1,6 +1,6 @@
 # Visualizace selection sort v cmd
-Tento program vizuálnì ukazuje fungování selection sort v pøíkazovém øádku.
+Tento program vizuÃ¡lnÄ› ukazuje fungovÃ¡nÃ­ selection sort v pÅ™Ã­kazovÃ©m Å™Ã¡dku.
 
-## Pouití!
+## PouÅ¾itÃ­
 -zkompilovat
--spustit s parametrem kterı urèuje velikost pole s èísly které se bude tøídit
+-spustit s parametrem kterÃ½ urÄuje velikost pole s ÄÃ­sly kterÃ© se bude tÅ™Ã­dit
