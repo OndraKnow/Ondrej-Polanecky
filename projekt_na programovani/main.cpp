@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 	int *arr;
 	srand(time(NULL));
 	const int sizeArray = atoi(argv[1]);
-	arr = malloc(sizeArray * sizeof(int));
+	arr = (int*)malloc(sizeArray * sizeof(int));
 	
 	fillArray(arr,sizeArray);
 	printArray(arr,sizeArray);
