@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-char result[64];
 const char* toUpper(const char* input) {
-	
+	static char result[255];
 	int counter = 0;
-	while (*input != '\0'  && counter <63) {
+	while (*input != '\0'  ) {
+		if (counter >= 254){
+			puts("Vysledek Nebude kompletni");
+			return result;
+		}
 		if (*input < 123 && *input >96) {
 			result[counter] = *input - 32;
 			++counter;
