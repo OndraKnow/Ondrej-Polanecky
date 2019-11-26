@@ -11,7 +11,63 @@
     task03 2 2 13 6 -v // should print "sum of 4 arguments is 23"
     task03 -v 13 4 // should print "sum of 2 arguments is 17"
 */
+#include <cstring>
+#include <cstdio>
+void interactive(bool verbose){
+	//TODO
+}
+
+void cliData(bool verbose, char* argv[], int argc){
+	//TODO
+}
+
+void fileData(bool verbose){
+	//TODO
+	puts("co");
+}
 
 int main(int argc, char* argv[]) {
-  // TODO
+  bool verbose = false;
+  if (strcmp(argv[1],"-v") == 0){
+	  verbose = true;
+	  if(strcmp(argv[2],"-i") == 0){
+		  interactive(verbose);
+	  }
+	  else if(strcmp(argv[2],"-f") == 0){
+		  fileData(verbose);
+	  }
+	  else{
+		  cliData(verbose,argv,argc);
+	  }
+  }
+  
+  else if (strcmp(argv[1],"-i") == 0){
+	  if (argc > 2){
+		  if(strcmp(argv[2],"-v") == 0){
+			  verbose = true;
+			  interactive(verbose);
+		  }  
+	  }
+	  else{
+		  interactive(verbose);
+	  }
+  }
+  
+  else if(strcmp(argv[1],"-f") == 0){
+	  if (argc > 2){
+		  if(strcmp(argv[2],"-v") == 0){
+			  verbose = true;
+			  fileData(verbose);
+		  }  
+	  }
+	  else{
+		  fileData(verbose);
+	  }
+  }
+  
+  else{
+	  cliData(verbose,argv,argc);
+  }
+  
+  
 }
