@@ -14,17 +14,83 @@
 #include <cstring>
 #include <cstdio>
 void interactive(bool verbose){
-	//TODO
+	int i;
+	int sum = 0;
+	char str[255];
+	int counter = 0;
+	while(true){	
+		
+		fgets(str,255,stdin);
+		if (strlen(str) == 1){
+			break;
+		}
+		sscanf(str,"%d",&i);
+		sum += i;
+		counter++;
+	}
+	if (verbose){
+		printf("Sum of %d numbers from standard input is %d",counter,sum);
+	}
+	else{
+		printf("%d",sum);
+	}
 }
 
 void cliData(bool verbose, char* argv[], int argc){
-	//TODO
+	int i;
+	int sum = 0;
+	if (verbose){
+		for(int j = 3; j < argc; j++){
+			sscanf(argv[j],"%d",&i);
+			sum += i;
+		}
+		
+	} 
+	else{
+		for(int j = 2; j < argc; j++){	
+			if (strcmp(argv[j],"-v") == 0){
+					verbose = true;
+			}
+			else{
+				sscanf(argv[j],"%d",&i);
+				sum += i;
+			}
+		}
+		
+	}
+	if (verbose){
+		printf("Sum of %d arguments is %d",argc-2,sum);
+	}
+	else{
+		printf("%d",sum);
+	}
 }
 
-void fileData(bool verbose){
-	//TODO
-	puts("co");
-}
+void fileData(bool verbose, char* argv[], int position){
+	FILE *fp;
+	char buff[255];
+	int i;
+	int sum = 0;
+	
+	fp = fopen(argv[position],"r");
+	while(true){
+		
+		if(fscanf(fp, "%s", buff)== EOF){
+			break;
+		}
+		sscanf(buff, "%d", &i);
+		sum+=i;
+	}
+	if (verbose){
+		printf("sum of numbers in %s is %d",argv[position],sum);
+	}
+	else{
+		printf("%d", sum);
+	}
+	
+	
+	}
+
 
 int main(int argc, char* argv[]) {
   bool verbose = false;
@@ -34,7 +100,7 @@ int main(int argc, char* argv[]) {
 		  interactive(verbose);
 	  }
 	  else if(strcmp(argv[2],"-f") == 0){
-		  fileData(verbose);
+		  fileData(verbose, argv, 3);
 	  }
 	  else{
 		  cliData(verbose,argv,argc);
@@ -46,7 +112,8 @@ int main(int argc, char* argv[]) {
 		  if(strcmp(argv[2],"-v") == 0){
 			  verbose = true;
 			  interactive(verbose);
-		  }  
+		  }
+		
 	  }
 	  else{
 		  interactive(verbose);
@@ -54,14 +121,18 @@ int main(int argc, char* argv[]) {
   }
   
   else if(strcmp(argv[1],"-f") == 0){
-	  if (argc > 2){
-		  if(strcmp(argv[2],"-v") == 0){
-			  verbose = true;
-			  fileData(verbose);
-		  }  
+	  if (argc > 3){
+			if(strcmp(argv[2],"-v") == 0){
+				verbose = true;
+				fileData(verbose, argv, 3);
+			}
+			else if(strcmp(argv[3],"-v")==0){
+				verbose = true;
+				fileData(verbose, argv, 2);
+			}
 	  }
 	  else{
-		  fileData(verbose);
+		  fileData(verbose, argv, 2);
 	  }
   }
   
