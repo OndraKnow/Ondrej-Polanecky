@@ -73,16 +73,13 @@ int main()
 	int m = buff[1] & 0b1111;
 	int d = buff[1]>>4 | ((buff[0] & 0b1)<<4);
 	int y = flipbits7(buff[0] >> 1) + 1900;
-
-	unsigned int mybyte1 = buff[11]<<24;
-	unsigned int mybyte2 = buff[10]<<16;
-	unsigned int mybyte3 = buff[9]<<8;
-	unsigned int mybyte4 = buff[8];
-	unsigned int test = buff[2];
-	unsigned int height = mybyte1 | mybyte2 | mybyte3 | mybyte4;
-	printBits(sizeof(height),&height);
-	
-	float myheight = toFloat(height);
+	unsigned int heightt = 0;
+	for (int i = 3; i >=0; i--){
+		unsigned int mybyte = buff[i + 8]<<8*i;
+		heightt |= mybyte;
+		
+	}
+	float myheight = toFloat(heightt);
 	
 	printf("%d.%d.%d Height: %f \n",d,m,y,myheight);
 }
