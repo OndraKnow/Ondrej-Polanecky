@@ -2,38 +2,32 @@
 #include <cstdio>
 struct Animal {
   const char* name;
+  const char* sound;
   
   virtual const char* whatDoesItSay(){
-	  sprintf(buff,"%s says ",name);
+  sprintf(buff,"%s says %s",name,sound);
 	  return buff;
   }
   Animal(const char* name){
 	this->name = name;
+	this->sound = "";
   }
+  
 protected:
   char buff[48];
 };
 
 struct Dog : Animal {
   // TODO
-  const char* sound;
-  const char* whatDoesItSay(){
-	  Animal::whatDoesItSay();
-	  strcat(buff,sound);
-	  return buff;
-  }
+
+  
   Dog(const char* name, const char* sound):Animal(name){
 	  this-> sound = sound;
   }
 };
 
 struct Fox : Animal {
-  const char* sound;
-  const char* whatDoesItSay(){
-	  Animal::whatDoesItSay();
-	  strcat(buff,sound);
-	  return buff;
-  }
+  
   Fox(const char* name, const char* sound):Animal(name){
 	  this-> sound = sound;
   }
