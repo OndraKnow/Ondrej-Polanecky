@@ -10,3 +10,6 @@ Zatím nic
 
 ## task03
 Výborně. Pouze u funkce `fscanf` dejte pozor u `"%s"` parametru na přetečení délky vstupu. Jednou z možností je použít `"%254[^\1]"`, která přečte max. 254 znaků (přidá se ještě ukončovací \0) až do konce souboru nebo výskytu \1 (který se v textu prakticky nevyskytuje, nemůžeme použít \0, neboť tento znak ukončuje řetězec). Při čtení binárního souboru, kde se mohou vyskytnout znaky \0 i \1 lze použít `fread`.
+
+## task04
+V pořádku.
