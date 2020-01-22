@@ -2,27 +2,28 @@
 
 struct Button{
     virtual void waitForButton() = 0;
-    virtual void output() = 0;
+    virtual void hello() = 0;
     
-    void hello(){
+    void printhello(){
         while (true)
         {
             waitForButton();
-            output();
+            hello();
         }   
     }
 };
 
 struct ButtonPC:Button{
     void waitForButton(){
-        getchar();
+        while(getchar()!='\n');
     }
-    void output(){
+    
+    void hello(){
         puts("hello");
     }
 };
 
 int main( int argc, char ** argv ){
     ButtonPC mujButton;
-    mujButton.hello();
+    mujButton.printhello();
 }
