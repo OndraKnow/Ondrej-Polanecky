@@ -47,13 +47,12 @@ struct mojeHra : hra
 
     virtual void printResult(){
         if (p1 + 10 <= p2 and p1 - 10 >= p2 ){
-            printf("vyhral hrac 1 s pismenem %c",p1);
+            printf("\nvyhral hrac 1 s pismenem %c",p1);
         }
         else
         {
-            printf("vyhral hrac 2 s pismenem %c",p2);
+            printf("\nvyhral hrac 2 s pismenem %c",p2);
         }
-        
     }
 };
 
