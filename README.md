@@ -14,5 +14,8 @@ Výborně. Pouze u funkce `fscanf` dejte pozor u `"%s"` parametru na přetečen�
 ## task04
 V pořádku.
 
+## task06
+Doplnil jsem vysvětlení, ale nejsem si úplně jist správností.
+
 ## task07
 Výborně.
