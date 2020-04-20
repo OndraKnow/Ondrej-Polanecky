@@ -1,5 +1,11 @@
+<<<<<<< HEAD
+#include <conio.h>
+#include <cstdio>
+
+=======
 
 #include <ncurses.h>
+>>>>>>> f4c6145a12afb991d6b350061dc3db3e281008c4
 struct hra
 {
     virtual bool checkWin() = 0;
@@ -17,7 +23,15 @@ struct hra
     }
 };
 
+struct mojehra : hra {
+    int moves;
+    char p1guess, p2guess;
 
+<<<<<<< HEAD
+    mojehra() {
+      moves = 0;
+    }
+=======
 struct mojeHra : hra
 {
     char p1;
@@ -57,11 +71,38 @@ struct mojeHra : hra
 };
 
 
+>>>>>>> f4c6145a12afb991d6b350061dc3db3e281008c4
+
+    virtual bool checkWin() {
+      if(moves<2) return false;
+      else return true;
+    }
+
+    virtual void makeMove() {
+      if(turn) p2guess = getch();
+      else p1guess = getch();
+      moves++;
+    }
+
+<<<<<<< HEAD
+    virtual void printResult() {
+      printf("P1 hadal %c, P2 hadal %c.\n", p1guess, p2guess);
+      if(p1guess>p2guess) puts("Vyhral P1");
+      else if(p1guess<p2guess) puts("Vyhral P2");
+      else puts("Remiza");
+    }
+
+};
 
 
 
 int main(int argc, char *argv[]){
+  mojehra stupidGame;
+  stupidGame.startGame();
+=======
+int main(int argc, char *argv[]){
     initscr();
     mojeHra mojehra;
     mojehra.startGame();
+>>>>>>> f4c6145a12afb991d6b350061dc3db3e281008c4
 }
