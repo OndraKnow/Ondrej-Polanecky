@@ -6,6 +6,7 @@
 	V C++ jsou operátory funkce jako každá jiná.
 	Vector2 obsahuje přetypovávací operátor char*(), který se volá tehdy, když NĚČEMU typu char* přiřadíme hodnotu Vector2. Pokud Vector2 obsahuje přetypovávací operátor, zavolá se tato funkce. Tento operátor tedy funguje podobně jako metoda toString() z jiných jazyků. Napište operátor double(), který vrátí velikost Vector2.
 */
+using namespace std;
 class Vector2 {
 protected:
     char buffer[16];
@@ -16,14 +17,14 @@ public:
     Vector2(int a, int b) : x(a), y(b) {
     }
 
-    operator char*() {
+    operator char *() {
         snprintf(buffer, 15, "[%d,%d]", x, y);
         return buffer;
     }
 
     // velikost vektoru
-    operator double(){
-        return hypot(x,y);
+    operator double() {
+        return hypot(x, y);
     }
 };
 
@@ -35,7 +36,7 @@ public:
     using Vector2::Vector2; // použij konstruktor pro Vector2
 
     Vector2a operator*(int n) {
-        return Vector2a(n*x, n*y);
+        return Vector2a(n * x, n * y);
     }
 };
 
@@ -47,29 +48,33 @@ public:
     using Vector2::Vector2;
 
     Vector2b operator*(int n) {
-        return Vector2b(n*x, n*y);
+        return Vector2b(n * x, n * y);
     }
 
-    // vektorový součin
-    Vector2b operator*(Vector2& v){
-        return Vector2b(x * v.x, y*v.y);
+    // vektorový součin (velikost výsledného vektoru)
+    int operator*(Vector2b &v) {
+        return abs((x * v.y) - (y * v.x));
     }
 };
 
 // globální funkce: operator*(a,b) je totéž, co a*b
-Vector2b operator*(int n, Vector2b& v) {
+Vector2b operator*(int n, Vector2b &v) {
     return v * n;
 }
+
 int main() {
 //	Vector2 v1 = {2,4}; // inicializace pomocí seznamu, od C++11
 //	Vector2 v1 {2,4}; // přímá inicializace členů, styl C
-    Vector2 v1 (2,4); // implicitní volání konstruktoru
+    Vector2 v1(2, 4); // implicitní volání konstruktoru
     puts(v1); // funguje díky operátoru char*()
 
-    Vector2a v2 {2,4};
+    Vector2a v2{2, 4};
     puts(v2 * 3); // funguje díky operátorům char*() a *()
     // puts(3 * v2); // chyba, v2 musí být na levé straně
 
-    Vector2b v3 {2,4};
-    puts(3 * v3);
+    // součin dvou vektorů, který vrátí velikost vektoru který je součinem vektorů, vracím pouze velikost, protože výsledný vektor by
+    // měl být 3D a být kolmo na plochu na které jsou tyto dva vektory
+    Vector2b v3{1, 2};
+    Vector2b v4{4, 3};
+    cout << v3 * v4 << endl;
 }
