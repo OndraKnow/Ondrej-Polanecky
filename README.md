@@ -19,3 +19,6 @@ Doplnil jsem vysvětlení, ale nejsem si úplně jist správností.
 
 ## task07
 Výborně.
+
+## task08
+Splněno
